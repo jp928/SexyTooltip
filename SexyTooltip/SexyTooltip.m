@@ -430,25 +430,25 @@ CGRectFromEdgeInsets(CGRect rect, UIEdgeInsets edgeInsets) {
     
     [self resizeContainerViewToContentSizeWithPadding];
     
-    BOOL good = NO;
+    // BOOL good = NO;
     for (NSNumber *permittedArrowDirection in _permittedArrowDirections) {
         SexyTooltipArrowDirection arrowDirection = [permittedArrowDirection integerValue];
-        if ([self positionTooltipForArrowDirection:arrowDirection aroundRect:rect inView:view force:NO]) {
+        if ([self positionTooltipForArrowDirection:arrowDirection aroundRect:rect inView:view force:YES]) {
             _arrowDirection = arrowDirection;
-            good = YES;
+            // good = YES;
             break;
         }
     }
     
-    if (!good) {
-        SexyTooltipArrowDirection arrowDirection;
-        if (_isShowing || _permittedArrowDirections.count == 0) {
-            arrowDirection = _arrowDirection;
-        } else {
-            arrowDirection = [[_permittedArrowDirections firstObject] integerValue];
-        }
-        [self positionTooltipForArrowDirection:arrowDirection aroundRect:rect inView:view force:YES];
-    }
+    // if (!good) {
+    //     SexyTooltipArrowDirection arrowDirection;
+    //     if (_isShowing || _permittedArrowDirections.count == 0) {
+    //         arrowDirection = _arrowDirection;
+    //     } else {
+    //         arrowDirection = [[_permittedArrowDirections firstObject] integerValue];
+    //     }
+    //     [self positionTooltipForArrowDirection:arrowDirection aroundRect:rect inView:view force:YES];
+    // }
     
     _isShowing = YES;
     [self updateShapeLayer];
